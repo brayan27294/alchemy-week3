@@ -10,7 +10,6 @@ const BlockDetails = ({ethBlock}) => {
     const blockMiner = ethBlock.miner;
     const baseFee = ethBlock.baseFeePerGas._hex;
     const difficulty = parseInt(ethBlock._difficulty._hex);
-    console.log(ethBlock);
     return (
         <Grid item xs={12}>
             <Typography variant="h5" component="div">

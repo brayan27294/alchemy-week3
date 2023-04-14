@@ -19,7 +19,7 @@ const ListOfBlocks = ({blockNumber, alchemy, setSelectedBlock}) => {
         }
     },[alchemy.core, blockNumber, setSelectedBlock]);
 
-    const getBlockItems = (data) => data.map(block => <Grid item xs={2}><BasicBlock ethBlock={block} onSelectBlock={setSelectedBlock}/></Grid>);
+    const getBlockItems = (data) => data.map((block, index) => <Grid item xs={2} key={`grid_bblock_${index}`}><BasicBlock ethBlock={block} onSelectBlock={setSelectedBlock}/></Grid>);
 
   return (
     <Grid container spacing={2}>

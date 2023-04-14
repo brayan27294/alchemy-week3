@@ -67,8 +67,6 @@ const ListOfTransactions = ({ethBlock , alchemy}) => {
         }
     },[alchemy.core, ethBlock]);
 
-    console.log(transactions);
-
   return (
     <Box sx={{ height: 630, width: '100%' }}>
         <DataGrid

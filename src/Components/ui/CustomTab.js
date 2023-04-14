@@ -38,10 +38,10 @@ const CustomTab = ({options}) => {
     <>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
             <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                {options.map((option, index) => (<Tab label={option.label} {...a11yProps(index)} />))}
+                {options.map((option, index) => (<Tab key={`tab_${index}`} label={option.label} {...a11yProps(index)} />))}
             </Tabs>
         </Box>
-        {options.map((option, index) => (<TabPanel value={value} index={index}>
+        {options.map((option, index) => (<TabPanel key={`tabPanel_${index}`} value={value} index={index}>
             {option.opt}
         </TabPanel>))}
       </>);  
