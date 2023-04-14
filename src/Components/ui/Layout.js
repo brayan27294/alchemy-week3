@@ -1,10 +1,13 @@
 import React from 'react';
-import { Container } from '@mui/material';
+import { Grid } from '@mui/material';
 
 const Layout = ({children}) => {
-    return <Container maxWidth={false}>
-        {children}
-    </Container>
+    return (
+        <Grid container padding={4}>
+            <Grid item xs={12}>
+                {children}
+            </Grid>
+        </Grid>);
 }
 
 export default Layout;

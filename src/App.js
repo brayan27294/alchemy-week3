@@ -1,11 +1,11 @@
-
-import { useEffect, useState } from 'react';
 import { ThemeProvider } from '@mui/styles';
-import { Button, CssBaseline, createTheme } from '@mui/material';
+import { CssBaseline, createTheme } from '@mui/material';
 import { Alchemy, Network } from 'alchemy-sdk';
 import Layout from './Components/ui/Layout';
-import ListOfBlocks from './Components/Block/ListOfBlocks';
 import './App.css';
+import CustomTab from './Components/ui/CustomTab';
+import EtherExplorer from './Pages/EtherExplorer';
+import Accounts from './Pages/Accounts';
 
 const theme = createTheme({
   palette: {
@@ -32,24 +32,23 @@ const settings = {
 const alchemy = new Alchemy(settings);
 
 const App = () => {
-  const [blockNumber, setBlockNumber] = useState(null);
-
-  const reloadData = async() => {
-      setBlockNumber(await alchemy.core.getBlockNumber());
-  };
-
-  useEffect(()=>{
-    reloadData();
-  },[]);
-
+  const options = [
+    {
+      label: 'Block Explorer',
+      opt: <EtherExplorer alchemy={alchemy} />
+    },
+    {
+      label: 'Accounts',
+      opt: <Accounts alchemy={alchemy} />
+    }
+  ];
   return (
-  <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
       <Layout>
-        <Button onClick={reloadData} variant='contained'>Reload Data</Button>
-        <ListOfBlocks blockNumber={blockNumber} alchemy={alchemy}/>
+        <CustomTab options={options}/>
       </Layout>
-  </ThemeProvider>);
-}
+    </ThemeProvider>);  
+};
 
 export default App;
